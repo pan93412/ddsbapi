@@ -15,8 +15,5 @@ namespace ddsbapi.Model
         /// The storage for the statistics of shorten URLs.
         /// </summary>
         public DbSet<Stat> Stat { get; set; }
-        /// <inheritdoc/>
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=blogging.db");
     }
 }
