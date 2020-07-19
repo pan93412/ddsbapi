@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ddsbapi.Consts
+namespace ddsbapi
 {
     /// <summary>
     /// Consts.
