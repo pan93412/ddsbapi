@@ -4,7 +4,7 @@ using System.Linq;
 namespace ddsbapi
 {
     /// <summary>
-    /// Consts.
+    /// Consts and some dynamic-generated values.
     /// </summary>
     public static class Consts
     {
