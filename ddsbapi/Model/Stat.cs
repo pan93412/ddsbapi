@@ -8,7 +8,7 @@
         /// <summary>
         /// The unique ID in table.
         /// </summary>
-        public int StatsId { get; set; }
+        public int StatId { get; set; }
         /// <summary>
         /// How many visitors visited this link?
         /// </summary>

@@ -15,5 +15,8 @@ namespace ddsbapi.Model
         /// The storage for the statistics of shorten URLs.
         /// </summary>
         public DbSet<Stat> Stat { get; set; }
+
+        /// <inheritdoc/>
+        public DDSBContext(DbContextOptions<DDSBContext> ctx) : base(ctx) { }
     }
 }
