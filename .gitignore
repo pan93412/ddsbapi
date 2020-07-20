@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+# EF Core & Generated XML
+ddsbapi.xml
+Migrations
+*.db*
