@@ -18,7 +18,7 @@
         };
 
         /// <summary>
-        /// BAD_URL: The URL to shorten is invaild.
+        /// ID_HAS_BEEN_TAKEN: This custom ID has been taken.
         /// </summary>
         public static readonly ErrorResponse IdHasBeenTaken = new ErrorResponse
         {
@@ -26,6 +26,30 @@
             {
                 Code = "ID_HAS_BEEN_TAKEN",
                 Message = "This custom ID has been taken."
+            }
+        };
+
+        /// <summary>
+        /// NO_SUCH_URL: No such a short link.
+        /// </summary>
+        public static readonly ErrorResponse NoSuchUrl = new ErrorResponse
+        {
+            Error = new ErrorDetails
+            {
+                Code = "NO_SUCH_URL",
+                Message = "No such a short link."
+            }
+        };
+
+        /// <summary>
+        /// WRONG_PASSWORD: The password is wrong.
+        /// </summary>
+        public static readonly ErrorResponse WrongPassword = new ErrorResponse
+        {
+            Error = new ErrorDetails
+            {
+                Code = "WRONG_PASSWORD",
+                Message = "The password is wrong."
             }
         };
     }
