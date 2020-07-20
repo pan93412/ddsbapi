@@ -1,6 +1,4 @@
-﻿using System.Reflection.Emit;
-
-namespace ddsbapi.Types.Generate
+﻿namespace ddsbapi.Types.Generate
 {
     /// <summary>
     /// The response of <c>/generate</c>.

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
-using ddsbapi.Model;
+﻿using ddsbapi.Model;
 using ddsbapi.Types;
 using ddsbapi.Types.Errors;
 using ddsbapi.Types.Generate;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
 
 namespace ddsbapi.Controllers
 {
@@ -108,7 +107,8 @@ namespace ddsbapi.Controllers
 
             return new GenericResponse<GenerateResponse>
             {
-                Data = new GenerateResponse {
+                Data = new GenerateResponse
+                {
                     Id = link.LinkBrowseId,
                     Password = link.Password
                 }
