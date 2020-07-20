@@ -28,15 +28,15 @@ namespace ddsbapi.Controllers
         }
 
         /// <summary>
-        /// Get the link with same ID specified in <paramref name="request"/>
+        /// Get the link with same <paramref name="id"/>
         /// </summary>
-        /// <param name="request">The request from <see cref="GenerateLink"/></param>
+        /// <param name="id">The ID</param>
         /// <returns>Return the link if any, otherwise <see langword="null"/>.</returns>
-        protected Link GetLinkWithSameId(GenerateRequest request)
+        protected Link GetLinkWithSameId(string id)
         {
             return ctx.Link.Where(
                     l =>
-                        l.LinkBrowseId == request.CustomId
+                        l.LinkBrowseId == id
                 ).FirstOrDefault();
         }
 
@@ -51,6 +51,7 @@ namespace ddsbapi.Controllers
                     l =>
                         l.RedirectURL == new Uri(request.Url) // the redirect url is same, and
                         && l.Password == request.Password // the password is same
+                        && request.CustomId == null
                 ).FirstOrDefault();
         }
 
@@ -62,6 +63,7 @@ namespace ddsbapi.Controllers
         [HttpPost]
         public ActionResult<GenericResponse<GenerateResponse>> GenerateLink([FromBody] GenerateRequest request)
         {
+            string newShortenLink = Consts.NewShortenLink;
             Uri redirectURL;
             Link link;
 
@@ -70,9 +72,14 @@ namespace ddsbapi.Controllers
                 throw new ArgumentNullException(nameof(request));
             }
 
-            if (GetLinkWithSameId(request) != null)
+            if (GetLinkWithSameId(request.CustomId) != null)
             {
                 return BadRequest(PredefinedErrors.IdHasBeenTaken);
+            }
+
+            while (GetLinkWithSameId(newShortenLink) != null)
+            {
+                newShortenLink = Consts.NewShortenLink;
             }
 
             try
@@ -89,7 +96,7 @@ namespace ddsbapi.Controllers
             {
                 link = new Link
                 {
-                    LinkBrowseId = request.CustomId ?? Consts.NewShortenLink,
+                    LinkBrowseId = request.CustomId ?? newShortenLink,
                     Password = request.Password ?? null,
                     RedirectURL = redirectURL,
                     Stat = new Stat()
